@@ -56,9 +56,14 @@ body {
     background-color: #F2F3F9;
 }
 
+span {
+    font-size: 15px;
+    font-weight: lighter;
+}
+
 /* *card view */
-.card-view {
-    margin-top: 50px;
+.card {
+    margin: 50px 0;
 }
 
 /* *content provinsi indonesia*/
@@ -88,4 +93,9 @@ body {
 
 .card-header {
     font-size: 15px;
+}
+
+.footer {
+    width: auto;
+    background-color: #fff;
 }

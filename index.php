@@ -8,7 +8,11 @@ $json_prov = json_decode($data_prov, true);
 $data_indonesia = file_get_contents("https://api.kawalcorona.com/indonesia");
 $json_indonesia = json_decode($data_indonesia, true);
 
-// dara corona global
+// data corona global
+$data_globe = file_get_contents("https://api.kawalcorona.com/");
+$json_globe = json_decode($data_globe, true);
+
+// data total corona global
 $data_globe = file_get_contents("https://api.kawalcorona.com/");
 $json_globe = json_decode($data_globe, true);
 // var_dump($json);
@@ -78,52 +82,11 @@ $json_globe = json_decode($data_globe, true);
 
     <!-- content -->
     <div class="content">
-
         <div class="container">
-            <div class="card-view">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="text-logo"><i class="fas fa-shield-virus"></i> Tanggap Corona <span>(Coronavirus Global & Indonesia Live Data)</span></h3>
-                        <h5>Pantau dan Cegah Corona agar Keluarga Terlindungi</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Danger card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Danger card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Danger card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Danger card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-md-12 sm-11">
+                    <h3 class="text-logo"><i class="fas fa-shield-virus"></i> Tanggap Corona <span class="col sm-1">(Coronavirus Global & Indonesia Live Data)</span></h3>
+                    <h5 class="col-md-12 sm-12">Pantau dan Cegah Corona agar Keluarga Terlindungi</h5>
                 </div>
             </div>
 
@@ -233,17 +196,51 @@ $json_globe = json_decode($data_globe, true);
             </div>
             <!-- end table -->
 
+            <!-- card -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 sm-12">
+                        <a href="https://www.unicef.org/indonesia/id/coronavirus">
+                            <div class="card text-white bg-danger mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Novel coronavirus (COVID-19): Hal-hal yang perlu Anda ketahui</h5>
+                                    <p class="card-text">UNICEF Indonesia</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 sm-12">
+                        <a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona">
+                            <div class="card text-white bg-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">INFOGRAFIK: Daftar 100 Rumah Sakit Rujukan Penanganan Virus Corona</h5>
+                                    <p class="card-text">Kompas</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- end content -->
+    </div>
+    <!-- end content -->
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <p>Powered by <a href="https://hack.co.id/">Ethical Hacker Indonesia</a>. Made by Faturprayuda</p>
+        </div>
+    </div>
+    <!-- end footer -->
 
 
-        <!-- sticky bar js -->
-        <script src="util/js/sticky_bar.js"></script>
+    <!-- sticky bar js -->
+    <script src="util/js/sticky_bar.js"></script>
 
-        <!-- js bootstrap -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- js bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>
