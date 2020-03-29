@@ -17,8 +17,9 @@ $data_suspect = file_get_contents("https://api.kawalcorona.com/detail/");
 $json_suspect = json_decode($data_suspect, true);
 
 
-var_dump($json_suspect);
-die;
+// var_dump($json_globe);
+// print_r($json_suspect);
+// die;
 
 ?>
 
@@ -122,8 +123,8 @@ die;
                                             <th scope="col" id="col">NO.</th>
                                             <th scope="col" id="col">KASUS</th>
                                             <th scope="col" id="col">PROVINSI</th>
-                                            <th scope="col" id="col">UMUR</th>
                                             <th scope="col" id="col">GENDER</th>
+                                            <th scope="col" id="col">UMUR</th>
                                             <th scope="col" id="col">KEWARGANEGARAAN</th>
                                             <th scope="col" id="col">STATUS</th>
                                             <th scope="col" id="col">RUMAH SAKIT</th>
@@ -131,19 +132,17 @@ die;
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
-                                        <?php foreach ($json_suspect as $suspect) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i ?></th>
-                                                <td><?= $suspect['nodes']['kasus'] ?></td>
-                                                <td><?= $suspect['nodes']['provinsi'] ?></td>
-                                                <td><?= $suspect['nodes']['umur'] ?></td>
-                                                <td><?= $suspect['nodes']['gender'] ?></td>
-                                                <td><?= $suspect['nodes']['wn'] ?></td>
-                                                <td><?= $suspect['nodes']['Sembuh'] ?></td>
-                                                <td><?= $suspect['nodes']['rs'] ?></td>
-                                            </tr>
-                                            <?php $i++ ?>
-                                        <?php endforeach; ?>
+                                        <tr>
+                                            <th scope="row"><?= $i ?></th>
+                                            <td><?php print_r($json_suspect['nodes'][0]['kasus']); ?></td>
+                                            <td><?php print_r($json_suspect['nodes'][0]['provinsi']); ?></td>
+                                            <td><?php print_r($json_suspect['nodes'][0]['gender']); ?></td>
+                                            <td><?php print_r($json_suspect['nodes'][0]['umur']); ?></td>
+                                            <td><?php print_r($json_suspect['nodes'][0]['wn']); ?></td>
+                                            <td><?php print_r($json_suspect['nodes'][0]['status']); ?></td>
+                                            <td><?php print_r($json_suspect['nodes'][0]['rs']); ?></td>
+                                        </tr>
+                                        <?php $i++ ?>
                                     </tbody>
                                 </table>
                             </div>
