@@ -12,28 +12,13 @@ $json_indonesia = json_decode($data_indonesia, true);
 $data_globe = file_get_contents("https://api.kawalcorona.com/");
 $json_globe = json_decode($data_globe, true);
 
-// data total corona global
-$data_globe = file_get_contents("https://api.kawalcorona.com/");
-$json_globe = json_decode($data_globe, true);
-// var_dump($json);
-// die;
+// data  kasus corona di indonesia
+$data_suspect = file_get_contents("https://api.kawalcorona.com/detail/");
+$json_suspect = json_decode($data_suspect, true);
 
-// foreach ($json as $key) {
-//     if (is_array($key)) {
-//         // var_dump($key['attributes']['Provinsi']);
-//         // die;
-//         // print_r($key[0]['message']['from']['first_name']);
 
-//         // foreach ($key as $data) {
-//         //     echo 'id_user =>';
-//         //     print_r($data['message']['from']['id'] . '<br/>');
-//         //     foreach ($key as $first_name) {
-//         //         echo 'First name =>';
-//         //         print_r($first_name['message']['from']['first_name'] . '<br/>');
-//         //     }
-//         // }
-//     }
-// }
+var_dump($json_suspect);
+die;
 
 ?>
 
@@ -126,7 +111,47 @@ $json_globe = json_decode($data_globe, true);
                     </div>
                 </div>
 
-                <div class="prov-indo" id="prov">
+                <div class="data-suspect">
+                    <div class="card">
+                        <h5 class="card-header">Data Kasus Pasien Coronavirus di Indonesia (Data by kawalcorona.com)</h5>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class=" table table-striped card-text table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" id="col">NO.</th>
+                                            <th scope="col" id="col">KASUS</th>
+                                            <th scope="col" id="col">PROVINSI</th>
+                                            <th scope="col" id="col">UMUR</th>
+                                            <th scope="col" id="col">GENDER</th>
+                                            <th scope="col" id="col">KEWARGANEGARAAN</th>
+                                            <th scope="col" id="col">STATUS</th>
+                                            <th scope="col" id="col">RUMAH SAKIT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($json_suspect as $suspect) : ?>
+                                            <tr>
+                                                <th scope="row"><?= $i ?></th>
+                                                <td><?= $suspect['nodes']['kasus'] ?></td>
+                                                <td><?= $suspect['nodes']['provinsi'] ?></td>
+                                                <td><?= $suspect['nodes']['umur'] ?></td>
+                                                <td><?= $suspect['nodes']['gender'] ?></td>
+                                                <td><?= $suspect['nodes']['wn'] ?></td>
+                                                <td><?= $suspect['nodes']['Sembuh'] ?></td>
+                                                <td><?= $suspect['nodes']['rs'] ?></td>
+                                            </tr>
+                                            <?php $i++ ?>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prov-indo">
                     <div class="card">
                         <h5 class="card-header">Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi (Data by kawalcorona.com)</h5>
                         <div class="card-body">
@@ -160,7 +185,7 @@ $json_globe = json_decode($data_globe, true);
                     </div>
                 </div>
 
-                <div class="globe" id="globe">
+                <div class="globe">
                     <div class="card">
                         <h5 class="card-header">Kasus Coronavirus Global (Data by kawalcorona.com)</h5>
                         <div class="card-body">
