@@ -66,6 +66,38 @@ span {
     margin: 50px 0;
 }
 
+.total {
+    font-weight: 500;
+    margin-bottom: -10px;
+    font-size: 13px;
+}
+
+.data {
+    margin: -5px 0;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.data-idn {
+    margin: -10px 0;
+    font-size: 11px;
+}
+
+.emot {
+    width: 50px;
+    margin: 15px 0 0 0;
+}
+
+.card-indo {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.tanggal {
+    margin-top: 20px;
+    margin-bottom: -50px;
+}
+
 /* *content provinsi indonesia*/
 .content .prov-indo,
 .data-indo,

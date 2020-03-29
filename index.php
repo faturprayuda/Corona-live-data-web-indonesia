@@ -17,9 +17,22 @@ $kasus = "https://api.kawalcorona.com/detail/";
 $data_suspect = file_get_contents($kasus);
 $json_suspect = json_decode($data_suspect, true);
 
+// data total positif corona global
+$data_globe_pos = file_get_contents("https://api.kawalcorona.com/positif");
+$json_globe_pos = json_decode($data_globe_pos, true);
 
-// var_dump($json_globe);
-// die;
+// data total sembuh corona global
+$data_globe_sembuh = file_get_contents("https://api.kawalcorona.com/sembuh");
+$json_globe_sembuh = json_decode($data_globe_sembuh, true);
+
+// data total meninggal corona global
+$data_globe_dead = file_get_contents("https://api.kawalcorona.com/meninggal");
+$json_globe_dead = json_decode($data_globe_dead, true);
+
+// convert tanggal
+// var_dump($json_globe[0]['attributes']['Last_Update']);
+$datejson = $json_globe[36]['attributes']['Last_Update'];
+$date = date("D, d-M-Y H:i:s", $datejson / 1000);
 
 ?>
 
@@ -56,10 +69,10 @@ $json_suspect = json_decode($data_suspect, true);
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> Dashboard</a>
-                    <a class="nav-item nav-link" href="#indo"><i class="fas fa-address-card"></i> Data Kasus Indonesia</a>
                     <a class="nav-item nav-link" href="#prov"><i class="fas fa-location-arrow"></i> Provinsi Indonesia</a>
+                    <a class="nav-item nav-link" href="#indo"><i class="fas fa-address-card"></i> Data Kasus Indonesia</a>
                     <a class="nav-item nav-link" href="#globe"> <i class="fas fa-globe"></i> Global</a>
-                    <a class="nav-item1 nav-link" href="https://kawalcorona.com/api/"><i class="fas fa-terminal"></i> API FOR DEVELOPER</a>
+                    <a class="nav-item1 nav-link" href="https://kawalcorona.com/api/" target="_blank"><i class="fas fa-terminal"></i> API FOR DEVELOPER</a>
                 </div>
             </div>
         </div>
@@ -76,84 +89,91 @@ $json_suspect = json_decode($data_suspect, true);
                 </div>
             </div>
 
+            <!-- cardview top -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card text-white bg-warning mb-3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card-body col-8">
+                                        <p class="card-text total">TOTAL POSITIF</p>
+                                        <p class="card-text data"> <?php print_r($json_globe_pos['value']); ?></p>
+                                        <p class="card-text">ORANG</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="emot" src="util/img/anxious.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-success mb-3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card-body col-8">
+                                        <p class="card-text total">TOTAL SEMBUH</p>
+                                        <p class="card-text data"> <?php print_r($json_globe_sembuh['value']); ?></p>
+                                        <p class="card-text">ORANG</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="emot" src="util/img/emotion.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-dark mb-3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card-body col-8">
+                                        <p class="card-text total">TOTAL MENINGGAL</p>
+                                        <p class="card-text data"> <?php print_r($json_globe_dead['value']); ?></p>
+                                        <p class="card-text">ORANG</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="emot" src="util/img/emotion-sad.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-danger mb-3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card-body col-8">
+                                        <p class="card-text card-indo">INDONESIA</p>
+                                        <?php foreach ($json_indonesia as $idn) : ?>
+                                            <p class="card-text data-idn"> <?= $idn['positif'] . " Positif, " . $idn['sembuh'] . " Sembuh, " . $idn['meninggal'] . " Meninggal"; ?></p>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="col-4">
+                                        <img class="emot" src="util/img/indonesia.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- tanggal -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center tanggal">
+                        <p>Sumber data : <a href="https://kawalcorona.com/">kawalcorona.com/</a>. Update terakhir : <?= $date ?></p>
+                    </div>
+                </div>
+            </div>
+
             <!-- table -->
             <div class="container">
-                <div class="data-indo">
-                    <div class="card">
-                        <h5 class="card-header" id="indo">Data Kasus Coronavirus di Indonesia (Data by kawalcorona.com)</h5>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class=" table table-striped card-text table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" id="col">NO.</th>
-                                            <th scope="col" id="col">Nama Negara</th>
-                                            <th scope="col" id="col">POSITIF</th>
-                                            <th scope="col" id="col">SEMBUH</th>
-                                            <th scope="col" id="col">MENINGGAL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($json_indonesia as $indo) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i ?></th>
-                                                <td><?= $indo['name'] ?></td>
-                                                <td><?= $indo['positif'] ?></td>
-                                                <td><?= $indo['sembuh'] ?></td>
-                                                <td><?= $indo['meninggal'] ?></td>
-                                            </tr>
-                                            <?php $i++ ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="data-suspect">
-                    <div class="card">
-                        <h5 class="card-header">Data Kasus Pasien Coronavirus di Indonesia (Data by kawalcorona.com)</h5>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class=" table table-striped card-text table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" id="col">NO.</th>
-                                            <th scope="col" id="col">KASUS</th>
-                                            <th scope="col" id="col">PROVINSI</th>
-                                            <th scope="col" id="col">GENDER</th>
-                                            <th scope="col" id="col">UMUR</th>
-                                            <th scope="col" id="col">KEWARGANEGARAAN</th>
-                                            <th scope="col" id="col">STATUS</th>
-                                            <th scope="col" id="col">RUMAH SAKIT</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($json_suspect['nodes'] as $suspect) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i ?></th>
-                                                <td><?= $suspect['kasus'] ?></td>
-                                                <td><?= $suspect['provinsi'] ?></td>
-                                                <td><?= $suspect['gender'] ?></td>
-                                                <td><?= $suspect['umur'] ?></td>
-                                                <td><?= $suspect['wn'] ?></td>
-                                                <td><?= $suspect['status'] ?></td>
-                                                <td><?= $suspect['rs'] ?></td>
-                                            </tr>
-                                            <?php $i++ ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="prov-indo">
-                    <div class="card">
+                    <div class="card" id="prov">
                         <h5 class="card-header">Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi (Data by kawalcorona.com)</h5>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -186,9 +206,45 @@ $json_suspect = json_decode($data_suspect, true);
                     </div>
                 </div>
 
+                <div class="data-suspect">
+                    <div class="card">
+                        <h5 class="card-header" id="indo">Data Kasus Coronavirus di Indonesia (Data by kawalcorona.com)</h5>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class=" table table-striped card-text table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" id="col">NO.</th>
+                                            <th scope="col" id="col">UMUR</th>
+                                            <th scope="col" id="col">GENDER</th>
+                                            <th scope="col" id="col">STATUS</th>
+                                            <th scope="col" id="col">KEWARGANEGARAAN</th>
+                                            <th scope="col" id="col">PROVINSI</th>
+                                            <th scope="col" id="col">RUMAH SAKIT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($json_suspect['nodes'] as $suspect) : ?>
+                                            <tr>
+                                                <th><?= $suspect['kasus'] ?></td>
+                                                <td><?= $suspect['umur'] ?></td>
+                                                <td><?= $suspect['gender'] ?></td>
+                                                <td><?= $suspect['status'] ?></td>
+                                                <td><?= $suspect['wn'] ?></td>
+                                                <td><?= $suspect['provinsi'] ?></td>
+                                                <td><?= $suspect['rs'] ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="globe">
                     <div class="card">
-                        <h5 class="card-header">Kasus Coronavirus Global (Data by kawalcorona.com)</h5>
+                        <h5 class="card-header" id="globe">Kasus Coronavirus Global (Data by kawalcorona.com)</h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class=" table table-striped card-text table-bordered">
@@ -254,7 +310,7 @@ $json_suspect = json_decode($data_suspect, true);
     <!-- footer -->
     <div class="footer">
         <div class="container">
-            <p>Powered by <a href="https://hack.co.id/">Ethical Hacker Indonesia</a>. Made by Faturprayuda</p>
+            <p>Powered by <a href="https://kawalcorona.com/">kawalcorona.com/</a>. Made by Faturprayuda</p>
         </div>
     </div>
     <!-- end footer -->
@@ -262,6 +318,9 @@ $json_suspect = json_decode($data_suspect, true);
 
     <!-- sticky bar js -->
     <script src="util/js/sticky_bar.js"></script>
+
+    <!-- My JS //pelajari lagi soal ini -->
+    <script src="util/js/main.js"></script>
 
     <!-- js bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
