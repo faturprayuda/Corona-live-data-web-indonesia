@@ -13,12 +13,12 @@ $data_globe = file_get_contents("https://api.kawalcorona.com/");
 $json_globe = json_decode($data_globe, true);
 
 // data  kasus corona di indonesia
-$data_suspect = file_get_contents("https://api.kawalcorona.com/detail/");
+$kasus = "https://api.kawalcorona.com/detail/";
+$data_suspect = file_get_contents($kasus);
 $json_suspect = json_decode($data_suspect, true);
 
 
 // var_dump($json_globe);
-// print_r($json_suspect);
 // die;
 
 ?>
@@ -132,17 +132,19 @@ $json_suspect = json_decode($data_suspect, true);
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
-                                        <tr>
-                                            <th scope="row"><?= $i ?></th>
-                                            <td><?php print_r($json_suspect['nodes'][0]['kasus']); ?></td>
-                                            <td><?php print_r($json_suspect['nodes'][0]['provinsi']); ?></td>
-                                            <td><?php print_r($json_suspect['nodes'][0]['gender']); ?></td>
-                                            <td><?php print_r($json_suspect['nodes'][0]['umur']); ?></td>
-                                            <td><?php print_r($json_suspect['nodes'][0]['wn']); ?></td>
-                                            <td><?php print_r($json_suspect['nodes'][0]['status']); ?></td>
-                                            <td><?php print_r($json_suspect['nodes'][0]['rs']); ?></td>
-                                        </tr>
-                                        <?php $i++ ?>
+                                        <?php foreach ($json_suspect['nodes'] as $suspect) : ?>
+                                            <tr>
+                                                <th scope="row"><?= $i ?></th>
+                                                <td><?= $suspect['kasus'] ?></td>
+                                                <td><?= $suspect['provinsi'] ?></td>
+                                                <td><?= $suspect['gender'] ?></td>
+                                                <td><?= $suspect['umur'] ?></td>
+                                                <td><?= $suspect['wn'] ?></td>
+                                                <td><?= $suspect['status'] ?></td>
+                                                <td><?= $suspect['rs'] ?></td>
+                                            </tr>
+                                            <?php $i++ ?>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
