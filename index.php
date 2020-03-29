@@ -31,8 +31,15 @@ $json_globe_dead = json_decode($data_globe_dead, true);
 
 // convert tanggal
 // var_dump($json_globe[0]['attributes']['Last_Update']);
-$datejson = $json_globe[36]['attributes']['Last_Update'];
-$date = date("D, d-M-Y H:i:s", $datejson / 1000);
+$dateUTC = $json_globe[36]['attributes']['Last_Update'];
+$date = gmdate("D, d-M-Y H:i:s e");
+
+$time = strtotime($date);
+
+date_default_timezone_set('Asia/Jakarta');
+
+$date = date("d-M-Y H:i:s", $time);
+
 
 ?>
 
@@ -69,8 +76,10 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> Dashboard</a>
-                    <a class="nav-item nav-link" href="#prov"><i class="fas fa-location-arrow"></i> Provinsi Indonesia</a>
-                    <a class="nav-item nav-link" href="#indo"><i class="fas fa-address-card"></i> Data Kasus Indonesia</a>
+                    <a class="nav-item nav-link" href="#prov"><i class="fas fa-location-arrow"></i> Provinsi
+                        Indonesia</a>
+                    <a class="nav-item nav-link" href="#indo"><i class="fas fa-address-card"></i> Data Kasus
+                        Indonesia</a>
                     <a class="nav-item nav-link" href="#globe"> <i class="fas fa-globe"></i> Global</a>
                     <a class="nav-item1 nav-link" href="https://kawalcorona.com/api/" target="_blank"><i class="fas fa-terminal"></i> API FOR DEVELOPER</a>
                 </div>
@@ -97,12 +106,13 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
                             <div class="container">
                                 <div class="row">
                                     <div class="card-body col-8">
-                                        <p class="card-text total">TOTAL POSITIF</p>
-                                        <p class="card-text data"> <?php print_r($json_globe_pos['value']); ?></p>
+                                        <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">
+                                            TOTAL POSITIF</p>
+                                        <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php print_r($json_globe_pos['value']); ?></p>
                                         <p class="card-text">ORANG</p>
                                     </div>
                                     <div class="col-4">
-                                        <img class="emot" src="util/img/anxious.svg" alt="">
+                                        <img class="emot" src="util/img/anxious.svg" style="width: 50px;margin: 15px 0 0 0;">
                                     </div>
                                 </div>
                             </div>
@@ -113,12 +123,12 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
                             <div class="container">
                                 <div class="row">
                                     <div class="card-body col-8">
-                                        <p class="card-text total">TOTAL SEMBUH</p>
-                                        <p class="card-text data"> <?php print_r($json_globe_sembuh['value']); ?></p>
+                                        <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">TOTAL SEMBUH</p>
+                                        <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php print_r($json_globe_sembuh['value']); ?></p>
                                         <p class="card-text">ORANG</p>
                                     </div>
                                     <div class="col-4">
-                                        <img class="emot" src="util/img/emotion.svg" alt="">
+                                        <img class="emot" src="util/img/emotion.svg" style="width: 50px; margin: 15px 0 0 0;">
                                     </div>
                                 </div>
                             </div>
@@ -129,12 +139,12 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
                             <div class="container">
                                 <div class="row">
                                     <div class="card-body col-8">
-                                        <p class="card-text total">TOTAL MENINGGAL</p>
-                                        <p class="card-text data"> <?php print_r($json_globe_dead['value']); ?></p>
+                                        <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">TOTAL MENINGGAL</p>
+                                        <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php print_r($json_globe_dead['value']); ?></p>
                                         <p class="card-text">ORANG</p>
                                     </div>
                                     <div class="col-4">
-                                        <img class="emot" src="util/img/emotion-sad.svg" alt="">
+                                        <img class="emot" src="util/img/emotion-sad.svg" style="width: 50px;margin: 15px 0 0 0;">
                                     </div>
                                 </div>
                             </div>
@@ -145,13 +155,15 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
                             <div class="container">
                                 <div class="row">
                                     <div class="card-body col-8">
-                                        <p class="card-text card-indo">INDONESIA</p>
+                                        <p class="card-text card-indo" style="font-weight: bolder;font-size: 20px;">INDONESIA</p>
                                         <?php foreach ($json_indonesia as $idn) : ?>
-                                            <p class="card-text data-idn"> <?= $idn['positif'] . " Positif, " . $idn['sembuh'] . " Sembuh, " . $idn['meninggal'] . " Meninggal"; ?></p>
+                                            <p class="card-text data-idn" style="margin: -4px 0;font-size: 11px;">
+                                                <?= $idn['positif'] . " Positif, " . $idn['sembuh'] . " Sembuh, " . $idn['meninggal'] . " Meninggal"; ?>
+                                            </p>
                                         <?php endforeach; ?>
                                     </div>
                                     <div class="col-4">
-                                        <img class="emot" src="util/img/indonesia.svg" alt="">
+                                        <img class="emot" src="util/img/indonesia.svg" style="width: 50px;margin: 15px 0 0 0;">
                                     </div>
                                 </div>
                             </div>
@@ -163,8 +175,9 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
             <!-- tanggal -->
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center tanggal">
-                        <p>Sumber data : <a href="https://kawalcorona.com/">kawalcorona.com/</a>. Update terakhir : <?= $date ?></p>
+                    <div class="col-12 text-center tanggal" style="margin-top: 20px; margin-bottom: -50px;">
+                        <p>Sumber data : <a href="https://kawalcorona.com/">kawalcorona.com/</a>. Update terakhir :
+                            <?= $date ?></p>
                     </div>
                 </div>
             </div>
@@ -174,7 +187,8 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
 
                 <div class="prov-indo">
                     <div class="card" id="prov">
-                        <h5 class="card-header">Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi (Data by kawalcorona.com)</h5>
+                        <h5 class="card-header">Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi (Data by
+                            kawalcorona.com)</h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class=" table table-striped card-text table-bordered">
@@ -208,7 +222,8 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
 
                 <div class="data-suspect">
                     <div class="card">
-                        <h5 class="card-header" id="indo">Data Kasus Coronavirus di Indonesia (Data by kawalcorona.com)</h5>
+                        <h5 class="card-header" id="indo">Data Kasus Coronavirus di Indonesia (Data by kawalcorona.com)
+                        </h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class=" table table-striped card-text table-bordered">
@@ -285,7 +300,8 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
                         <a href="https://www.unicef.org/indonesia/id/coronavirus">
                             <div class="card text-white bg-danger mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title">Novel coronavirus (COVID-19): Hal-hal yang perlu Anda ketahui</h5>
+                                    <h5 class="card-title">Novel coronavirus (COVID-19): Hal-hal yang perlu Anda ketahui
+                                    </h5>
                                     <p class="card-text">UNICEF Indonesia</p>
                                 </div>
                             </div>
@@ -295,7 +311,8 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
                         <a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona">
                             <div class="card text-white bg-success mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title">INFOGRAFIK: Daftar 100 Rumah Sakit Rujukan Penanganan Virus Corona</h5>
+                                    <h5 class="card-title">INFOGRAFIK: Daftar 100 Rumah Sakit Rujukan Penanganan Virus
+                                        Corona</h5>
                                     <p class="card-text">Kompas</p>
                                 </div>
                             </div>
@@ -323,9 +340,12 @@ $date = date("D, d-M-Y H:i:s", $datejson / 1000);
     <script src="util/js/main.js"></script>
 
     <!-- js bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
