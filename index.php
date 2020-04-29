@@ -1,44 +1,44 @@
 <?php
 //membuka file JSON
 // data corona provinsi
-$data_prov = file_get_contents("https://api.kawalcorona.com/indonesia/provinsi");
-$json_prov = json_decode($data_prov, true);
+// $data_prov = file_get_contents("https://api.kawalcorona.com/indonesia/provinsi");
+// $json_prov = json_decode($data_prov, true);
 
 // data suspect corona
-$data_indonesia = file_get_contents("https://api.kawalcorona.com/indonesia");
-$json_indonesia = json_decode($data_indonesia, true);
+// $data_indonesia = file_get_contents("https://api.kawalcorona.com/indonesia");
+// $json_indonesia = json_decode($data_indonesia, true);
 
 // data corona global
-$data_globe = file_get_contents("https://api.kawalcorona.com/");
-$json_globe = json_decode($data_globe, true);
+// $data_globe = file_get_contents("https://api.kawalcorona.com/");
+// $json_globe = json_decode($data_globe, true);
 
-// data  kasus corona di indonesia
-$kasus = "https://api.kawalcorona.com/detail/";
-$data_suspect = file_get_contents($kasus);
-$json_suspect = json_decode($data_suspect, true);
+// // data  kasus corona di indonesia
+// $kasus = "https://api.kawalcorona.com/detail/";
+// $data_suspect = file_get_contents($kasus);
+// $json_suspect = json_decode($data_suspect, true);
 
 // data total positif corona global
-$data_globe_pos = file_get_contents("https://api.kawalcorona.com/positif");
-$json_globe_pos = json_decode($data_globe_pos, true);
+// $data_globe_pos = file_get_contents("https://api.kawalcorona.com/positif");
+// $json_globe_pos = json_decode($data_globe_pos, true);
 
 // data total sembuh corona global
-$data_globe_sembuh = file_get_contents("https://api.kawalcorona.com/sembuh");
-$json_globe_sembuh = json_decode($data_globe_sembuh, true);
+// $data_globe_sembuh = file_get_contents("https://api.kawalcorona.com/sembuh");
+// $json_globe_sembuh = json_decode($data_globe_sembuh, true);
 
 // data total meninggal corona global
-$data_globe_dead = file_get_contents("https://api.kawalcorona.com/meninggal");
-$json_globe_dead = json_decode($data_globe_dead, true);
+// $data_globe_dead = file_get_contents("https://api.kawalcorona.com/meninggal");
+// $json_globe_dead = json_decode($data_globe_dead, true);
 
 // convert tanggal
 // var_dump($json_globe[0]['attributes']['Last_Update']);
-$dateUTC = $json_globe[36]['attributes']['Last_Update'];
-$date = gmdate("D, d-M-Y H:i:s e");
+// $dateUTC = $json_globe[36]['attributes']['Last_Update'];
+// $date = gmdate("D, d-M-Y H:i:s e");
 
-$time = strtotime($date);
+// $time = strtotime($date);
 
-date_default_timezone_set('Asia/Jakarta');
+// date_default_timezone_set('Asia/Jakarta');
 
-$date = date("d-M-Y H:i:s", $time);
+// $date = date("d-M-Y H:i:s", $time);
 
 
 ?>
@@ -78,8 +78,8 @@ $date = date("d-M-Y H:i:s", $time);
                     <a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> Dashboard</a>
                     <a class="nav-item nav-link" href="#prov"><i class="fas fa-location-arrow"></i> Provinsi
                         Indonesia</a>
-                    <a class="nav-item nav-link" href="#indo"><i class="fas fa-address-card"></i> Data Kasus
-                        Indonesia</a>
+                    <!-- <a class="nav-item nav-link" href="#indo"><i class="fas fa-address-card"></i> Data Kasus
+                        Indonesia</a> -->
                     <a class="nav-item nav-link" href="#globe"> <i class="fas fa-globe"></i> Global</a>
                     <a class="nav-item1 nav-link" href="https://kawalcorona.com/api/" target="_blank"><i class="fas fa-terminal"></i> API FOR DEVELOPER</a>
                 </div>
@@ -89,100 +89,277 @@ $date = date("d-M-Y H:i:s", $time);
     <!-- end navbar -->
 
     <!-- content -->
+
+    <!-- jumbotront -->
     <div class="content">
-        <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container text-jumbo">
+                <img src="util/img/1588147361944.png" class="img-jumbo">
+                <h1 class=" txt-logo text-center"><i class="fas fa-shield-virus"></i> Tanggap Corona</h1>
+                <p class="lead text-center">Pantau dan Cegah Corona agar Keluarga Terlindungi</p>
+            </div>
+        </div>
+        <!-- end jumbotront -->
+
+        <!-- cardview top -->
+        <div class="container cont-card">
             <div class="row">
-                <div class="col-md-12 sm-11">
-                    <h3 class="text-logo"><i class="fas fa-shield-virus"></i> Tanggap Corona <span class="col sm-1">(Coronavirus Global & Indonesia Live Data)</span></h3>
-                    <h5 class="col-md-12 sm-12">Pantau dan Cegah Corona agar Keluarga Terlindungi</h5>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning mb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card-body">
+                                    <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">
+                                        TOTAL POSITIF</p>
+                                    <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php //print_r($json_globe_pos['value']); 
+                                                                                                                            ?></p>
+                                    <p class="card-text">ORANG</p>
+                                </div>
+                                <div class="">
+                                    <img class="emot-img1" src="util/img/anxious.svg" style="width: 50px;margin: 15px 0 0 0;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- cardview top -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card text-white bg-warning mb-3">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="card-body col-8">
-                                        <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">
-                                            TOTAL POSITIF</p>
-                                        <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php print_r($json_globe_pos['value']); ?></p>
-                                        <p class="card-text">ORANG</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="emot" src="util/img/anxious.svg" style="width: 50px;margin: 15px 0 0 0;">
-                                    </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card-body col-8">
+                                    <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">TOTAL SEMBUH</p>
+                                    <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php //print_r($json_globe_sembuh['value']); 
+                                                                                                                            ?></p>
+                                    <p class="card-text">ORANG</p>
+                                </div>
+                                <div class="col-4">
+                                    <img class="emot" src="util/img/emotion.svg" style="width: 50px; margin: 15px 0 0 0;">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-white bg-success mb-3">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="card-body col-8">
-                                        <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">TOTAL SEMBUH</p>
-                                        <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php print_r($json_globe_sembuh['value']); ?></p>
-                                        <p class="card-text">ORANG</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="emot" src="util/img/emotion.svg" style="width: 50px; margin: 15px 0 0 0;">
-                                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card-body col-8">
+                                    <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">TOTAL MENINGGAL</p>
+                                    <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php //print_r($json_globe_dead['value']); 
+                                                                                                                            ?></p>
+                                    <p class="card-text">ORANG</p>
+                                </div>
+                                <div class="col-4">
+                                    <img class="emot" src="util/img/emotion-sad.svg" style="width: 50px;margin: 15px 0 0 0;">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-white bg-dark mb-3">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="card-body col-8">
-                                        <p class="card-text total" style="font-weight: 500; margin-bottom: -10px; font-size: 13px;">TOTAL MENINGGAL</p>
-                                        <p class="card-text data" style="margin: -5px 0;font-size: 30px;font-weight: bolder;"> <?php print_r($json_globe_dead['value']); ?></p>
-                                        <p class="card-text">ORANG</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="emot" src="util/img/emotion-sad.svg" style="width: 50px;margin: 15px 0 0 0;">
-                                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-danger mb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card-body col-8">
+                                    <p class="card-text card-indo" style="font-weight: bolder;font-size: 20px;">INDONESIA</p>
+                                    <?php //foreach ($json_indonesia as $idn) : 
+                                    ?>
+                                    <p class="card-text data-idn" style="margin: -4px 0;font-size: 11px;">
+                                        <? //= $idn['positif'] . " Positif, " . $idn['sembuh'] . " Sembuh, " . $idn['meninggal'] . " Meninggal"; 
+                                        ?>
+                                    </p>
+                                    <?php //endforeach; 
+                                    ?>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card text-white bg-danger mb-3">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="card-body col-8">
-                                        <p class="card-text card-indo" style="font-weight: bolder;font-size: 20px;">INDONESIA</p>
-                                        <?php foreach ($json_indonesia as $idn) : ?>
-                                            <p class="card-text data-idn" style="margin: -4px 0;font-size: 11px;">
-                                                <?= $idn['positif'] . " Positif, " . $idn['sembuh'] . " Sembuh, " . $idn['meninggal'] . " Meninggal"; ?>
-                                            </p>
-                                        <?php endforeach; ?>
-                                    </div>
-                                    <div class="col-4">
-                                        <img class="emot" src="util/img/indonesia.svg" style="width: 50px;margin: 15px 0 0 0;">
-                                    </div>
+                                <div class="col-4">
+                                    <img class="emot" src="util/img/indonesia.svg" style="width: 50px;margin: 15px 0 0 0;">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- tanggal -->
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center tanggal" style="margin-top: 20px; margin-bottom: -50px;">
                         <p>Sumber data : <a href="https://kawalcorona.com/">kawalcorona.com/</a>. Update terakhir :
-                            <?= $date ?></p>
+                            <? //////= $date 
+                            ?></p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- table -->
+        <!-- about corona -->
+        <div class="article1">
+            <div class="container">
+                <div class="row row-artcile">
+                    <div class="col-lg-6 cont-article pos-dua">
+                        <small class="pile-notif">Tentang Covid-19</small>
+                        <h1 class="article-title mb-2">Apa itu Covid-19?</h1>
+                        <p>COVID-19 adalah penyakit menular yang disebabkan oleh jenis coronavirus yang baru ditemukan. Ini merupakan virus baru dan penyakit yang sebelumnya tidak dikenal sebelum terjadi wabah di Wuhan, Tiongkok, bulan Desember 2019.</p>
+                        <p>Coronavirus adalah suatu kelompok virus yang dapat menyebabkan penyakit pada hewan atau manusia. Beberapa jenis coronavirus diketahui menyebabkan infeksi saluran nafas pada manusia mulai dari batuk pilek hingga yang lebih serius seperti Middle East Respiratory Syndrome (MERS) dan Severe Acute Respiratory Syndrome (SARS). Coronavirus jenis baru yang ditemukan menyebabkan penyakit COVID-19. <a href="https://www.who.int/indonesia/news/novel-coronavirus/qa-for-public">(WHO)</a> </p>
+                    </div>
+                    <div class="col-lg-6 cont-img-article pos-satu">
+                        <img src="util/img/IMG_20200429_211603.png" width="500px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end about corona -->
+
+        <!-- about spread corona -->
+        <div class="article">
+            <div class="container">
+                <div class="row row-artcile1">
+                    <div class="col-lg-6 cont-img-article pos-dua">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card card-icon">
+                                    <img src="util/img/healthcare-and-medical.svg" class="card-img-top">
+                                    <div class="card-body">
+                                        <p class="card-text text-center" style="text-transform:capitalize;">Orang yang Bersin atau Batuk sembarangan menyebabkan droplet bertebaran disekitar.</p>
+                                    </div>
+                                </div>
+                                <div class="card card-icon">
+                                    <img src="util/img/business.svg" class="card-img-top">
+                                    <div class="card-body">
+                                        <p class="card-text text-center" style="text-transform:capitalize;">Hindari berjabat tangan untuk mencegah penyebaran coronavirus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-5">
+                                <div class="card card-icon">
+                                    <img src="util/img/animals.svg" class="card-img-top">
+                                    <div class="card-body">
+                                        <p class="card-text text-center" style="text-transform:capitalize;">Sejumlah hewan liar berpeluang untuk menjadi inang bagi coronavirus, terutama kelelawar.</p>
+                                    </div>
+                                </div>
+                                <div class="card card-icon">
+                                    <img src="util/img/medical.svg" class="card-img-top">
+                                    <div class="card-body">
+                                        <p class="card-text text-center" style="text-transform:capitalize;">selain droplet, penyebaran coronavirus dapat menyebar melalui sentuhan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 cont-article pos-satu spread-article">
+                        <small class="pile-notif">Penyebaran Covid-19</small>
+                        <h1 class="article-title mb-2">Bagaimana Covid-19 Menyebar?</h1>
+                        <p>Orang dapat tertular COVID-19 dari orang lain yang terjangkit virus ini. COVID-19 dapat menyebar dari orang ke orang melalui percikan-percikan dari hidung atau mulut yang keluar saat orang yang terjangkit COVID-19 batuk atau mengeluarkan napas. Percikan-percikan ini kemudian jatuh ke benda-benda dan permukaan-permukaan di sekitar. Orang yang menyentuh benda atau permukaan tersebut lalu menyentuh mata, hidung atau mulutnya, dapat terjangkit COVID-19. Penularan COVID-19 juga dapat terjadi jika orang menghirup percikan yang keluar dari batuk atau napas orang yang terjangkit COVID-19. Oleh karena itu, penting bagi kita untuk menjaga jarak lebih dari 1 meter dari orang yang sakit. <a href="https://www.who.int/indonesia/news/novel-coronavirus/qa-for-public">(WHO)</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end about spread corona -->
+
+        <!-- about symptomps corona -->
+        <div class="article1 mt-1">
+            <div class="container">
+                <div class="row row-artcile">
+                    <div class="col-lg-12 cont-article mt-5">
+                        <small class="pile-notif pile-gejala">Gejala Covid-19</small>
+                        <h1 class="article-title mb-2 text-center">Gejala pada Covid-19</h1>
+                        <p class="text-center">Gejala-gejala COVID-19 yang paling umum adalah demam, rasa lelah, dan batuk kering. Beberapa pasien mungkin mengalami rasa nyeri dan sakit, hidung tersumbat, pilek, sakit tenggorokan atau diare, Gejala-gejala yang dialami biasanya bersifat ringan dan muncul secara bertahap. Beberapa orang yang terinfeksi tidak menunjukkan gejala apa pun dan tetap merasa sehat. Sebagian besar (sekitar 80%) orang yang terinfeksi berhasil pulih tanpa perlu perawatan khusus. Sekitar 1 dari 6 orang yang terjangkit COVID-19 menderita sakit parah dan kesulitan bernapas. Orang-orang lanjut usia (lansia) dan orang-orang dengan kondisi medis yang sudah ada sebelumnya seperti tekanan darah tinggi, gangguan jantung atau diabetes, punya kemungkinan lebih besar mengalami sakit lebih serius. Mereka yang mengalami demam, batuk dan kesulitan bernapas sebaiknya mencari pertolongan medis. <a href="https://www.who.int/indonesia/news/novel-coronavirus/qa-for-public">(WHO)</a> </p>
+                    </div>
+                    <div class="col-lg-12 img-symp">
+                        <img src="util/img/symptomp.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end about symptomps corona -->
+
+        <!-- about spread corona -->
+        <div class="article">
+            <div class="container">
+                <div class="row row-artcile">
+                    <div class="col-lg-12 cont-article mt-5">
+                        <small class="pile-notif pile-gejala">Pencegahan Covid-19</small>
+                        <h2 class="article-title mb-2 text-center">Bagaimana Melindungi Diri dan Mencegah Penyebaran Covid-19?</h2>
+                        <p class="text-center">Tetap ikuti informasi terbaru tentang wabah COVID-19 yang tersedia di situs web WHO dan melalui Kementerian Kesehatan dan Dinas Kesehatan daerah Anda. Di banyak negara di dunia, kasus dan bahkan wabah COVID-19 telah terjadi. Pemerintah Tiongkok dan pemerintah beberapa negara lain telah berhasil memperlambat atau menghentikan wabah yang terjadi di wilayahnya. Namun, situasi yang ada masih sulit diprediksi. Karena itu, tetaplah ikuti berita terbaru.
+                            Anda dapat mengurangi risiko terinfeksi atau menyebarkan COVID-19 dengan cara melakukan beberapa langkah pencegahan: </p>
+                    </div>
+                    <div class="col-lg-12 cont-img-article">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Yang Harus <span class="green" style="color: green">Dilakukan</span> : </h5>
+                                <div class="card card-icon1">
+                                    <div class="row">
+                                        <img src="util/img/healthcare-and-medical.svg" class="card-img-top col-6">
+                                        <div class="card-body col-6">
+                                            <h5><b>Cuci Tangan Setiap hari</b></h5>
+                                            <p class="card-text text-justify" style="text-transform:capitalize;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio illum blanditiis atque delectus quas possimus placeat aut iste quam molestias. .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-icon1">
+                                    <div class="row">
+                                        <img src="util/img/healthcare-and-medical.svg" class="card-img-top col-6">
+                                        <div class="card-body col-6">
+                                            <h5><b>Cuci Tangan Setiap hari</b></h5>
+                                            <p class="card-text text-justify" style="text-transform:capitalize;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio illum blanditiis atque delectus quas possimus placeat aut iste quam molestias. .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-icon1">
+                                    <div class="row">
+                                        <img src="util/img/healthcare-and-medical.svg" class="card-img-top col-6">
+                                        <div class="card-body col-6">
+                                            <h5><b>Cuci Tangan Setiap hari</b></h5>
+                                            <p class="card-text text-justify" style="text-transform:capitalize;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio illum blanditiis atque delectus quas possimus placeat aut iste quam molestias. .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <h5>Yang Harus <span class="red" style="color: red">Jangan Dilakukan</span> : </h5>
+                                <div class="card card-icon1">
+                                    <div class="row">
+                                        <img src="util/img/healthcare-and-medical.svg" class="card-img-top col-6">
+                                        <div class="card-body col-6">
+                                            <h5><b>Cuci Tangan Setiap hari</b></h5>
+                                            <p class="card-text text-justify" style="text-transform:capitalize;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio illum blanditiis atque delectus quas possimus placeat aut iste quam molestias. .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-icon1">
+                                    <div class="row">
+                                        <img src="util/img/healthcare-and-medical.svg" class="card-img-top col-6">
+                                        <div class="card-body col-6">
+                                            <h5><b>Cuci Tangan Setiap hari</b></h5>
+                                            <p class="card-text text-justify" style="text-transform:capitalize;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio illum blanditiis atque delectus quas possimus placeat aut iste quam molestias. .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-icon1">
+                                    <div class="row">
+                                        <img src="util/img/healthcare-and-medical.svg" class="card-img-top col-6">
+                                        <div class="card-body col-6">
+                                            <h5><b>Cuci Tangan Setiap hari</b></h5>
+                                            <p class="card-text text-justify" style="text-transform:capitalize;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio illum blanditiis atque delectus quas possimus placeat aut iste quam molestias. .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end about spread corona -->
+
+        <div class="container">
+            <!-- <div class="row">
+                <div class="col-md-12 sm-11">
+                    <h3 class="text-logo"><i class="fas fa-shield-virus"></i> Tanggap Corona <span class="col sm-1">(Coronavirus Global & Indonesia Live Data)</span></h3>
+                    <h5 class="col-md-12 sm-12">Pantau dan Cegah Corona agar Keluarga Terlindungi</h5>
+                </div>
+            </div> -->
+
+            <!-- table data corona -->
             <div class="container">
 
                 <div class="prov-indo">
@@ -202,17 +379,26 @@ $date = date("d-M-Y H:i:s", $time);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($json_prov as $prov) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i ?></th>
-                                                <td><?= $prov['attributes']['Provinsi'] ?></td>
-                                                <td><?= $prov['attributes']['Kasus_Posi'] ?></td>
-                                                <td><?= $prov['attributes']['Kasus_Semb'] ?></td>
-                                                <td><?= $prov['attributes']['Kasus_Meni'] ?></td>
-                                            </tr>
-                                            <?php $i++ ?>
-                                        <?php endforeach; ?>
+                                        <?php ////$i = 1; 
+                                        ?>
+                                        <?php ////foreach ($json_prov as $prov) : 
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><? ////= $i 
+                                                            ?></th>
+                                            <td><? ////= $prov['attributes']['Provinsi'] 
+                                                ?></td>
+                                            <td><? ////= $prov['attributes']['Kasus_Posi'] 
+                                                ?></td>
+                                            <td><? ////= $prov['attributes']['Kasus_Semb'] 
+                                                ?></td>
+                                            <td><? ////= $prov['attributes']['Kasus_Meni'] 
+                                                ?></td>
+                                        </tr>
+                                        <?php ////$i++ 
+                                        ?>
+                                        <?php ////endforeach; 
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -220,7 +406,7 @@ $date = date("d-M-Y H:i:s", $time);
                     </div>
                 </div>
 
-                <div class="data-suspect">
+                <!-- <div class="data-suspect">
                     <div class="card">
                         <h5 class="card-header" id="indo">Data Kasus Coronavirus di Indonesia (Data by kawalcorona.com)
                         </h5>
@@ -239,23 +425,13 @@ $date = date("d-M-Y H:i:s", $time);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($json_suspect['nodes'] as $suspect) : ?>
-                                            <tr>
-                                                <th><?= $suspect['kasus'] ?></td>
-                                                <td><?= $suspect['umur'] ?></td>
-                                                <td><?= $suspect['gender'] ?></td>
-                                                <td><?= $suspect['status'] ?></td>
-                                                <td><?= $suspect['wn'] ?></td>
-                                                <td><?= $suspect['provinsi'] ?></td>
-                                                <td><?= $suspect['rs'] ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="globe">
                     <div class="card">
@@ -273,17 +449,26 @@ $date = date("d-M-Y H:i:s", $time);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($json_globe as $globe) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i ?></th>
-                                                <td><?= $globe['attributes']['Country_Region'] ?></td>
-                                                <td><?= $globe['attributes']['Confirmed'] ?></td>
-                                                <td><?= $globe['attributes']['Recovered'] ?></td>
-                                                <td><?= $globe['attributes']['Deaths'] ?></td>
-                                            </tr>
-                                            <?php $i++ ?>
-                                        <?php endforeach; ?>
+                                        <?php //$i = 1; 
+                                        ?>
+                                        <?php //foreach ($json_globe as $globe) : 
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><? //= $i 
+                                                            ?></th>
+                                            <td><? //= $globe['attributes']['Country_Region'] 
+                                                ?></td>
+                                            <td><? //= $globe['attributes']['Confirmed'] 
+                                                ?></td>
+                                            <td><? //= $globe['attributes']['Recovered'] 
+                                                ?></td>
+                                            <td><? //= $globe['attributes']['Deaths'] 
+                                                ?></td>
+                                        </tr>
+                                        <?php //$i++ 
+                                        ?>
+                                        <?php //endforeach; 
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -1,1 +1,0 @@
-document.getElementById(tes).style.color = "red";

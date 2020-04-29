@@ -1,6 +1,8 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    cursor: default;
+    font-family: 'Sen', sans-serif;
 }
 
 /* *navbar */
@@ -30,11 +32,12 @@ body {
     /* Position the navbar at the top of the page */
     width: 100%;
     /* Full width */
+    z-index: 2;
 }
 
 /* Page content */
 .content {
-    padding: 16px;
+    padding: 0px;
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -56,15 +59,90 @@ body {
     background-color: #F2F3F9;
 }
 
-span {
+.jumbotron {
+    background-color: #4FB7AE !important;
+}
+
+.jumbotron-fluid {
+    margin-top: -2px;
+}
+
+.text-jumbo {
+    margin-top: 100px;
+}
+
+.txt-logo {
+    font-size: 56px;
+}
+
+.img-jumbo {
+    width: 450px;
+    margin: -200px 0 -100px 350px;
+}
+
+/* span {
     font-size: 15px;
     font-weight: lighter;
-}
+} */
 
 /* *card view */
 .card {
-    margin: 50px 0;
+    margin: 20px 0;
 }
+
+.cont-card {
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    margin-top: -100px;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+}
+
+/* *artcile corona */
+.article1 {
+    margin-top: -80px;
+    background-color: white;
+    position: relative;
+    z-index: 0;
+}
+
+.cont-article {
+    margin-top: 200px;
+}
+
+.cont-img-article {
+    margin-top: 150px;
+}
+
+.article-title {
+    font-weight: bolder;
+}
+
+/* *article spread */
+
+.card-icon {
+    width: 200px;
+}
+
+.card img {
+    margin: 10px 0 0 45px;
+    max-width: 90px;
+}
+
+.row-artcile1 {
+    margin-top: -150px;
+}
+
+/* *symptomps */
+.img-symp {
+    margin: 20px 0 0 200px
+}
+
+
+
+
+
 
 .total {
     font-weight: 500;
@@ -86,6 +164,11 @@ span {
 .emot {
     width: 50px;
     margin: 15px 0 0 0;
+}
+
+.emot-img1 {
+    width: 50px;
+    margin: 50px 0 0 -50px;
 }
 
 .card-indo {
@@ -130,4 +213,72 @@ span {
 .footer {
     width: auto;
     background-color: #fff;
+}
+
+/* *utility */
+/* *pile notif */
+.pile-notif {
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background-color: rgb(255, 211, 211);
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.pile-gejala {
+    margin-left: 490px;
+}
+
+@media (max-width: 576px) {
+
+    /* *jumbotron */
+    .txt-logo {
+        font-size: 45px;
+    }
+
+    .lead {
+        margin-bottom: 60px;
+    }
+
+    .img-jumbo {
+        width: 450px;
+        margin: -200px 0 -95px 20px;
+    }
+
+    /* *article */
+    .row-article {
+        display: flex;
+    }
+
+    .cont-article {
+        margin-top: 0;
+    }
+
+    .pos-satu {
+        order: 0;
+    }
+
+    .pos-dua {
+        order: 1;
+    }
+
+    .img-symp img {
+        width: 450px;
+        margin-left: -200px;
+    }
+
+    /* *spread */
+    .spread-article {
+        margin-top: 200px;
+        margin-bottom: -150px;
+    }
+
+    /* *utility */
+    /* *pile notif */
+
+    .pile-gejala {
+        margin-left: 160px;
+    }
+
 }
