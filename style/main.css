@@ -1,83 +1,83 @@
 * {
-    margin: 0;
-    padding: 0;
-    cursor: default;
-    font-family: 'Sen', sans-serif;
+  margin: 0;
+  padding: 0;
+  cursor: default;
+  font-family: "Sen", sans-serif;
 }
 
 /* *navbar */
 .navbar {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-    background-color: #fff;
-    position: relative;
-    z-index: 1;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar-nav .nav-item {
-    border-right: 1px solid #eaedf1;
+  border-right: 1px solid #eaedf1;
 }
 
 .navbar-brand,
 .nav-link {
-    font-family: 'Sen', sans-serif;
-    font-size: 17px;
+  font-family: "Sen", sans-serif;
+  font-size: 17px;
 }
 
 /* *navbar sticky */
 #navbar {
-    overflow: hidden;
-    position: fixed;
-    /* Set the navbar to fixed position */
-    top: 0;
-    /* Position the navbar at the top of the page */
-    width: 100%;
-    /* Full width */
-    z-index: 2;
+  overflow: hidden;
+  position: fixed;
+  /* Set the navbar to fixed position */
+  top: 0;
+  /* Position the navbar at the top of the page */
+  width: 100%;
+  /* Full width */
+  z-index: 2;
 }
 
 /* Page content */
 .content {
-    padding: 0px;
+  padding: 0px;
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky+.content {
-    padding-top: 60px;
+.sticky + .content {
+  padding-top: 60px;
 }
 
 /* *content */
 .content {
-    /* position: relative; */
-    z-index: -1;
-    background-color: #F2F3F9;
+  /* position: relative; */
+  z-index: -1;
+  background-color: #f2f3f9;
 }
 
 .jumbotron {
-    background-color: #4FB7AE !important;
+  background-color: #4fb7ae !important;
 }
 
 .jumbotron-fluid {
-    margin-top: -2px;
+  margin-top: -2px;
 }
 
 .text-jumbo {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .txt-logo {
-    font-size: 56px;
+  font-size: 56px;
 }
 
 .img-jumbo {
-    width: 450px;
-    margin: -200px 0 -100px 350px;
+  width: 450px;
+  margin: -200px 0 -100px 350px;
 }
 
 /* span {
@@ -87,198 +87,218 @@
 
 /* *card view */
 .card {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .cont-card {
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
-    border-radius: 12px;
-    margin-top: -100px;
-    background-color: white;
-    position: relative;
-    z-index: 1;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  margin-top: -100px;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.fix-card {
+  max-height: auto;
 }
 
 /* *artcile corona */
 .article1 {
-    margin-top: -80px;
-    background-color: white;
-    position: relative;
-    z-index: 0;
+  margin-top: -80px;
+  background-color: white;
+  position: relative;
+  z-index: 0;
 }
 
 .cont-article {
-    margin-top: 200px;
+  margin-top: 200px;
 }
 
 .cont-img-article {
-    margin-top: 150px;
+  margin-top: 150px;
+}
+
+.cont-img-article img {
+  width: 500px;
 }
 
 .article-title {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 /* *article spread */
 
 .card-icon {
-    width: 200px;
+  width: 200px;
 }
 
 .card img {
-    margin: 10px 0 0 45px;
-    max-width: 90px;
+  margin: 10px 0 0 45px;
+  max-width: 90px;
 }
 
 .row-artcile1 {
-    margin-top: -150px;
+  margin-top: -150px;
 }
 
 /* *symptomps */
 .img-symp {
-    margin: 20px 0 0 200px
+  margin: 20px 0 0 200px;
 }
 
-
-
-
-
+/* *province indo */
+.data-province {
+  background-color: white;
+}
 
 .total {
-    font-weight: 500;
-    margin-bottom: -10px;
-    font-size: 13px;
+  font-weight: 500;
+  margin-bottom: -10px;
+  font-size: 13px;
 }
 
 .data {
-    margin: -5px 0;
-    font-size: 30px;
-    font-weight: bolder;
+  margin: -5px 0;
+  font-size: 30px;
+  font-weight: bolder;
 }
 
 .data-idn {
-    margin: -10px 0;
-    font-size: 11px;
+  margin: -10px 0;
+  font-size: 11px;
 }
 
 .emot {
-    width: 50px;
-    margin: 15px 0 0 0;
+  width: 50px;
+  margin: 15px 0 0 0;
 }
 
 .emot-img1 {
-    width: 50px;
-    margin: 50px 0 0 -50px;
+  width: 50px;
+  margin: 50px 0 0 -50px;
 }
 
 .card-indo {
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-.tanggal {
-    margin-top: 20px;
-    margin-bottom: -50px;
+  font-weight: bolder;
+  font-size: 20px;
 }
 
 /* *content provinsi indonesia*/
 .content .prov-indo,
 .data-indo,
 .globe {
-    background-color: #ffffff;
-    margin: 50px 0;
+  background-color: #ffffff;
+  margin: 50px 0;
 }
 
 .table {
-    font-family: 'Sen', sans-serif;
+  font-family: "Sen", sans-serif;
 }
 
 #col {
-    position: sticky;
-    top: 0;
-    background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
 }
 
 .table-responsive {
-    display: block;
-    overflow-y: scroll;
-    width: 100%;
-    height: 550px;
+  display: block;
+  overflow-y: scroll;
+  width: 100%;
+  height: 550px;
 }
 
 .card-header {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .footer {
-    width: auto;
-    background-color: #fff;
+  width: auto;
+  background-color: #fff;
 }
 
 /* *utility */
 /* *pile notif */
 .pile-notif {
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    background-color: rgb(255, 211, 211);
-    color: rgb(255, 0, 0);
-    font-weight: bold;
-    padding: 5px 10px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: rgb(255, 211, 211);
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  padding: 5px 10px;
 }
 
 .pile-gejala {
-    margin-left: 490px;
+  margin-left: 490px;
 }
 
+.pile-data {
+  padding-top: 50px;
+}
+
+.pile-data1 {
+  margin-left: 490px;
+}
 @media (max-width: 576px) {
+  /* *jumbotron */
+  .txt-logo {
+    font-size: 40px;
+  }
 
-    /* *jumbotron */
-    .txt-logo {
-        font-size: 45px;
-    }
+  .lead {
+    margin-bottom: 60px;
+  }
 
-    .lead {
-        margin-bottom: 60px;
-    }
+  .img-jumbo {
+    width: 424px;
+    margin: -200px 0 -85px 0;
+  }
 
-    .img-jumbo {
-        width: 450px;
-        margin: -200px 0 -95px 20px;
-    }
+  /* *article */
+  .row-article {
+    display: flex;
+  }
 
-    /* *article */
-    .row-article {
-        display: flex;
-    }
+  .cont-article {
+    margin-top: 0;
+  }
 
-    .cont-article {
-        margin-top: 0;
-    }
+  .pos-satu {
+    order: 0;
+  }
 
-    .pos-satu {
-        order: 0;
-    }
+  .pos-dua {
+    order: 1;
+  }
 
-    .pos-dua {
-        order: 1;
-    }
+  .img-symp img {
+    width: 450px;
+    margin-left: -200px;
+  }
 
-    .img-symp img {
-        width: 450px;
-        margin-left: -200px;
-    }
+  /* *spread */
+  .spread-article {
+    margin-top: 200px;
+    margin-bottom: -150px;
+  }
 
-    /* *spread */
-    .spread-article {
-        margin-top: 200px;
-        margin-bottom: -150px;
-    }
+  /* *utility */
+  /* *pile notif */
 
-    /* *utility */
-    /* *pile notif */
+  .pile-gejala {
+    margin-left: 140px;
+  }
 
-    .pile-gejala {
-        margin-left: 160px;
-    }
+  .cont-img-article {
+    margin-top: 150px;
+  }
 
+  .cont-img-article img {
+    width: 350px;
+  }
+
+  .img-symp img {
+    width: 438px;
+  }
 }
